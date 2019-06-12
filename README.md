@@ -49,6 +49,15 @@ Vue项目打包优化及部署上线+课程总结
 
 ### 作业
 第一课作业：
+
 样式引入到组件内，Vue页面实现和原型html页面有出入；没有做到像素级同步，为什么？
+
 目的：考查对项目的熟悉程度，对样式的熟练程度。
+
+第一节课笔记：
+
+1、[全栈商城项目课程简介](http://note.youdao.com/noteshare?id=0e6c11f3488fd15e683ab988c268f9bd&sub=A5F0609EAADE4A84B9CA3F6C80C9F745)
+
+2、[第一讲：需求分析及框架搭建，商品列表实现（2019-6-12）](http://note.youdao.com/noteshare?id=896962ddba20d4f819d3aa737c77ebfc&sub=19ED3C0159CF4D1EAA1A6D44B890A587)
+
 
