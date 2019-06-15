@@ -1,0 +1,14 @@
+{
+  "name": "vue2-shop-server",
+  "version": "1.0.0",
+  "description": "全栈商城项目服务端",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Song",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
