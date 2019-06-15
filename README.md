@@ -60,4 +60,6 @@ Vue项目打包优化及部署上线+课程总结
 
 2、[第一讲：需求分析及框架搭建，商品列表实现（2019-6-12）](http://note.youdao.com/noteshare?id=896962ddba20d4f819d3aa737c77ebfc&sub=19ED3C0159CF4D1EAA1A6D44B890A587)
 
+第二节课笔记：
 
+1、[第二讲：商品列表模块实现的两种方式及价格过滤组件的实现（含移动端适配）（2019-6-15）](http://note.youdao.com/noteshare?id=7691af7561a89a5c9fa893cc508c59ca&sub=EC8150ED8BAE457A962429D10B535002)
