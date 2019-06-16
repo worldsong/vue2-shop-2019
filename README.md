@@ -69,3 +69,7 @@ Webstorm、git、nvm、vue-devtools、mongodb
 第二节课笔记：
 
 1、[第二讲：商品列表模块实现的两种方式及价格过滤组件的实现（含移动端适配）（2019-6-15）](http://note.youdao.com/noteshare?id=7691af7561a89a5c9fa893cc508c59ca&sub=EC8150ED8BAE457A962429D10B535002)
+
+第三节课笔记：
+
+1、[第三讲：商城后台框架搭建与商品列表滚动分页及价格过滤功能实现（2019-06-16）](http://note.youdao.com/noteshare?id=e88d3c4a173662250250bf92c7d5793f&sub=A31204453D4044FABD271477A95F37B3)
