@@ -47,6 +47,12 @@ Vue2商城需求分析及框架搭建，商品列表实现
 
 Vue项目打包优化及部署上线+课程总结
 
+### 环境资源
+Webstorm、git、nvm、vue-devtools、mongodb
+
+链接：https://pan.baidu.com/s/192FcnHjvm3cZc6b6mUlUmw
+提取码：ite8
+
 ### 作业
 第一课作业：
 
