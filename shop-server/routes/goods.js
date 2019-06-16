@@ -17,9 +17,18 @@ mongoose.connection.on("error", function () {
 mongoose.connection.on("disconnected", function () {
   console.log("MongoDB connected disconnected.");
 });
-
+/*
+* 分页 http://localhost:3000/goods?page=2&pageSize=8&sort=1&priceLevel=all
+* */
 router.get("/", function (req, res, next) {
-  Goods.find({}, function (err, doc) {
+  let page = parseInt(req.param("page"));
+  let pageSize = parseInt(req.param("pageSize"));
+  let sort = req.param("sort"); // 1 表示升序， -1 表示降序
+  let skip = (page - 1) * pageSize;
+  let params = {};
+  let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
+  goodsModel.sort({'salePrice': sort});
+  goodsModel.exec(function (err, doc) {
     if(err){
       res.json({
         status: '1',
