@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('./../models/users');
 
-/* 登录接口 */
+/* 用户登录接口 */
 router.post('/login', function(req, res, next) {
   var param = {
     userName: req.body.userName,
@@ -35,5 +35,18 @@ router.post('/login', function(req, res, next) {
     }
   })
 });
+
+/* 用户登出接口 */
+router.post('/logout', function (req, res, next) {
+  res.cookie("userId", "", {
+    path: '/',
+    maxAge: -1
+  })
+  res.json({
+    status: "0",
+    msg: '',
+    result: ''
+  })
+})
 
 module.exports = router;
