@@ -13,6 +13,9 @@ module.exports = {
     proxyTable: {
       '/goods': {// 8080/goods
         target: 'http://localhost:3000'
+      },
+      '/users': {// 8080/users
+        target: 'http://localhost:3000'
       }
     },
 
