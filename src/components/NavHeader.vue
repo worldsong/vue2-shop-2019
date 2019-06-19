@@ -99,10 +99,31 @@
     },
     methods: {
       logOut(){
-
+        axios.post("/users/logout").then((response) => {
+          let res = response.data;
+          if(res.status == "0"){
+            this.nickName = ''
+          }
+        })
       },
       login(){
-
+        if(!this.userName || !this.userPwd){
+          this.errorTip = true;
+          return;
+        }
+        axios.post("/users/login", {
+          userName: this.userName,
+          userPwd: this.userPwd
+        }).then((response) => {
+          let res = response.data;
+          if(res.status == "0"){
+            this.errorTip = false;
+            this.loginModalFlag = false;
+            this.nickName = res.result.userName;
+          } else {
+            this.errorTip = true;
+          }
+        })
       }
     }
   }
