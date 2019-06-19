@@ -18,7 +18,7 @@ mongoose.connection.on("disconnected", function () {
   console.log("MongoDB connected disconnected.");
 });
 /*
-* 分页 http://localhost:3000/goods?page=2&pageSize=8&sort=1&priceLevel=all
+* 商品列表分页 http://localhost:3000/goods?page=2&pageSize=8&sort=1&priceLevel=all
 * */
 router.get("/", function (req, res, next) {
   let page = parseInt(req.param("page"));
@@ -62,6 +62,78 @@ router.get("/", function (req, res, next) {
           list: doc
         }
       })
+    }
+  })
+});
+
+/*
+* 商品加入购物车
+* */
+router.post("/addCart", function (req, res, next) {
+  var userId = '100000077', productId = req.body.productId;
+  var User = require('../models/users');
+  User.findOne({userId: userId}, function (err, userDoc) {
+    if(err){
+      res.json({
+        status: "1",
+        msg: err.message
+      })
+    } else {
+      console.log("userDoc: " + userDoc );
+      if(userDoc){
+        var goodsItem = '';
+        userDoc.cartList.forEach(function (item) { // 遍历购物车，是否早已存在该商品
+          if(item.productId == productId){ // 购物车中存在该商品，令其数量加1
+            goodsItem = item;
+            item.productNum ++;
+          }
+        });
+        if(goodsItem){ // 购物车存在该商品，保存更新的购物车数据
+          userDoc.save(function (err2, doc2) {
+            if(err2){
+              res.json({
+                status: '1',
+                msg: err2.message
+              })
+            } else {
+              res.json({
+                status: '0',
+                msg: '',
+                result: 'success'
+              })
+            }
+          })
+        } else {
+          Goods.findOne({productId: productId}, function (err1, doc) {
+            if(err1){
+              res.json({
+                status: "1",
+                msg: err1.message
+              })
+            } else {
+              if(doc){ // 新添加一种商品到购物车
+                doc.productNum = 1;
+                doc.checked = 1;
+                userDoc.cartList.push(doc);
+                userDoc.save(function (err2, doc2) {
+                  if(err2){
+                    res.json({
+                      status: "1",
+                      msg: err2.message
+                    })
+                  } else {
+                    res.json({
+                      status: "0",
+                      msg: '',
+                      result: 'success'
+                    })
+                  }
+                })
+              }
+            }
+          })
+        }
+      }
     }
   })
 })
