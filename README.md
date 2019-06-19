@@ -73,3 +73,7 @@ Webstorm、git、nvm、vue-devtools、mongodb
 第三节课笔记：
 
 1、[第三讲：商城后台框架搭建与商品列表滚动分页及价格过滤功能实现（2019-06-16）](http://note.youdao.com/noteshare?id=e88d3c4a173662250250bf92c7d5793f&sub=A31204453D4044FABD271477A95F37B3)
+
+第四节课笔记：
+
+1、[第四讲：业务功能开发（一）商品加入购物车及用户登录登出（2019-06-19）](http://note.youdao.com/noteshare?id=a90a8d9247ac081998fb99227e96713a&sub=21CBB2CAB7EF4AFEA021136F79739537)
