@@ -50,6 +50,14 @@
         </div>
       </div>
     </div>
+    <modal v-bind:mdShow="mdShow" v-on:close="closeModal">
+      <p slot="message">
+        请先登录，否则无法加入到购物车中!
+      </p>
+      <div slot="btnGroup">
+        <a href="javascript:void(0)" class="btn btn--m" @click="mdShow=false">关闭</a>
+      </div>
+    </modal>
     <modal v-bind:mdShow="mdShowCart" v-on:close="closeModal">
       <p slot="message">
         <svg class="icon-status-ok">
@@ -117,7 +125,8 @@
         priceChecked: 'all',
         filterBy: false,
         overLayFlag: false,
-        mdShowCart: false
+        mdShowCart: false,
+        mdShow: false
       }
     },
     mounted(){
@@ -138,7 +147,7 @@
           priceLevel: this.priceChecked
         }
         this.loading = true;
-        axios.get("http://localhost:3000/goods", {
+        axios.get("http://localhost:3000/goods/list", {
           params: param
         }).then((result) => {
           console.log(result)
@@ -202,11 +211,13 @@
             this.mdShowCart = true;
           } else {
             alert("Error msg: " + res.msg);
+            this.mdShow = true;
           }
         })
       },
       closeModal(){
         this.mdShowCart = false;
+        this.mdShow = false;
       }
     }
   }

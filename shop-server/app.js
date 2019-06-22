@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
     next();
   }else {
     console.log("url: " + req.originalUrl);
-    if(req.originalUrl =='/users/login' || req.originalUrl=='/users/logout' || req.originalUrl.indexOf('/goods')> -1 ){
+    if(req.originalUrl =='/users/login' || req.originalUrl=='/users/logout' || req.originalUrl.indexOf('/goods/list')> -1 ){
       next();
     } else {
       res.json({

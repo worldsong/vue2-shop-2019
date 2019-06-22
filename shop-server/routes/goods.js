@@ -20,7 +20,7 @@ mongoose.connection.on("disconnected", function () {
 /*
 * 商品列表分页 http://localhost:3000/goods?page=2&pageSize=8&sort=1&priceLevel=all
 * */
-router.get("/", function (req, res, next) {
+router.get("/list", function (req, res, next) {
   let page = parseInt(req.param("page"));
   let pageSize = parseInt(req.param("pageSize"));
   let sort = req.param("sort"); // 1 表示升序， -1 表示降序
