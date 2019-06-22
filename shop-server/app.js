@@ -29,6 +29,24 @@ app.all('*', function(req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
+
+// 登录拦截，限制服务端接口或页面的访问
+app.use(function (req, res, next) {
+  if(req.cookies.userId){
+    next();
+  }else {
+    console.log("url: " + req.originalUrl);
+    if(req.originalUrl =='/users/login' || req.originalUrl=='/users/logout' || req.originalUrl.indexOf('/goods')> -1 ){
+      next();
+    } else {
+      res.json({
+        status: '10001',
+        msg: '当前未登录',
+        result: ''
+      })
+    }
+  }
+})
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/goods', goodsRouter);
