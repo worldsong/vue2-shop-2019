@@ -77,3 +77,7 @@ Webstorm、git、nvm、vue-devtools、mongodb
 第四节课笔记：
 
 1、[第四讲：业务功能开发（一）商品加入购物车及用户登录登出（2019-06-19）](http://note.youdao.com/noteshare?id=a90a8d9247ac081998fb99227e96713a&sub=21CBB2CAB7EF4AFEA021136F79739537)
+
+第五次课笔记：
+
+1、[第五讲：业务功能开发（二）（登录相关的高级功能及购物车列表功能实现）（2019-06-22）](http://note.youdao.com/noteshare?id=4db8bc44b5ad8d7a3d36380abd583a71&sub=4A63B853907A4145B7BED0D3DC5E3B3D)
