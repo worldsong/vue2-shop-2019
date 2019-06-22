@@ -97,6 +97,9 @@
         nickName: ''
       }
     },
+    mounted(){
+      this.checkLogin();
+    },
     methods: {
       logOut(){
         axios.post("/users/logout").then((response) => {
@@ -122,6 +125,17 @@
             this.nickName = res.result.userName;
           } else {
             this.errorTip = true;
+          }
+        })
+      },
+      checkLogin(){
+        axios.get("users/checkLogin").then((response) => {
+          var res = response.data;
+          if(res.status =="0"){
+            this.nickName = res.result;
+            this.loginModalFlag = false;
+          } else {
+
           }
         })
       }
