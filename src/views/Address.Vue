@@ -60,11 +60,11 @@
           <div class="addr-list-wrap">
             <div class="addr-list">
               <ul>
-                <li>
+                <li v-for="(item,index) in addressListFilter">
                   <dl>
-                    <dt>XXX（用户名）</dt>
-                    <dd class="address">湖南省长沙市麓谷企业广场</dd>
-                    <dd class="tel">772083612@qq.com</dd>
+                    <dt>{{ item.userName }}</dt>
+                    <dd class="address">{{ item.streetName}}</dd>
+                    <dd class="tel">{{ item.tel }}</dd>
                   </dl>
                   <div class="addr-opration addr-del">
                     <a href="javascript:;" class="addr-del-btn">
@@ -74,7 +74,7 @@
                   <div class="addr-opration addr-set-default">
                     <a href="javascript:;" class="addr-set-default-btn"><i>Set default</i></a>
                   </div>
-                  <div class="addr-opration addr-default">默认地址</div>
+                  <div class="addr-opration addr-default" v-if="item.isDefault">默认地址</div>
                 </li>
                 <li class="addr-new">
                   <div class="add-new-inner">
@@ -143,10 +143,48 @@
     name: 'Address',
     data () {
       return {
-
+        limit: 3,
+        addressList : [
+          {
+            "addressId" : "410001",
+            "userName" : "admin",
+            "streetName" : "湖南 长沙市 岳麓区 城区麓谷企业广场",
+            "postCode" : "410001",
+            "tel" : "772083612",
+            "isDefault" : true
+          },
+          {
+            "addressId" : "410001",
+            "userName" : "admin",
+            "streetName" : "湖南 长沙市 岳麓区",
+            "postCode" : "410001",
+            "tel" : "2060884089",
+            "isDefault" : false
+          },
+          {
+            "addressId" : "410001",
+            "userName" : "Song",
+            "streetName" : "湖南 长沙市 ",
+            "postCode" : "410001",
+            "tel" : "1017735262",
+            "isDefault" : false
+          },
+          {
+            "addressId" : "410001",
+            "userName" : "Song",
+            "streetName" : "湖南",
+            "postCode" : "410001",
+            "tel" : "1017735262",
+            "isDefault" : false
+          }
+        ]
       }
     },
-    computed:{},
+    computed:{
+      addressListFilter(){
+        return this.addressList.slice(0, this.limit);
+      }
+    },
     mounted(){
 
     },
