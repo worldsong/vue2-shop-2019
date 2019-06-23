@@ -109,8 +109,8 @@
           <div class="cart-foot-inner">
             <div class="cart-foot-l">
               <div class="item-all-check">
-                <a href="javascipt:;">
-                           <span class="checkbox-btn item-check-btn">
+                <a href="javascipt:void(0);" @click="toggleCheckAll">
+                           <span class="checkbox-btn item-check-btn" v-bind:class="{'check': checkAllFlag}">
                               <svg class="icon icon-ok"><use xlink:href="#icon-ok"/></svg>
                            </span>
                   <span>全选</span>
@@ -163,6 +163,16 @@
       }
     },
     computed:{
+      checkedCount(){
+        var i = 0;
+        this.cartList.forEach((item) => {
+          if(item.checked == '1') i++;
+        });
+        return i;
+      },
+      checkAllFlag(){
+        return this.checkedCount == this.cartList.length;
+      },
       totalPrice(){
         var money = 0;
         this.cartList.forEach((item) => {
@@ -227,6 +237,20 @@
           let res = response.data;
           if(res.status == '0'){
             console.log("editCart update success")
+          }
+        })
+      },
+      toggleCheckAll(){
+        var flag = !this.checkAllFlag;
+        this.cartList.forEach((item)=> {
+          item.checked = flag ? '1' : '0'
+        });
+        axios.post('/users/editCheckAll', {
+          checkAll: flag
+        }).then((response) => {
+          let res = response.data;
+          if(res.status== '0'){
+            console.log("toggleCheckAll update success.")
           }
         })
       }
