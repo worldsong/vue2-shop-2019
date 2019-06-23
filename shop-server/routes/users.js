@@ -86,6 +86,34 @@ router.get("/cartlist", function (req, res, next) {
       }
     }
   })
+});
+
+/* 购物车商品删除 */
+router.post("/cartDel", function (req, res, next) {
+  var userId = req.cookies.userId, productId = req.body.productId;
+  User.update({
+    userId:userId
+  },{
+    $pull: {
+      'cartList':{
+        'productId':productId
+      }
+    }
+  }, function (err, doc) {
+    if(err){
+      res.json({
+        status: "1",
+        msg: err.msg,
+        result: ''
+      })
+    } else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: 'success'
+      })
+    }
+  })
 })
 
 module.exports = router;
