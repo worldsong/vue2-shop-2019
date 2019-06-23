@@ -60,7 +60,7 @@
           <div class="addr-list-wrap">
             <div class="addr-list">
               <ul>
-                <li v-for="(item,index) in addressListFilter">
+                <li v-for="(item,index) in addressListFilter" v-bind:class="{'check': checkIndex == index}" @click="checkIndex=index;selectedAddrId=item.addressId">
                   <dl>
                     <dt>{{ item.userName }}</dt>
                     <dd class="address">{{ item.streetName}}</dd>
@@ -72,7 +72,7 @@
                     </a>
                   </div>
                   <div class="addr-opration addr-set-default">
-                    <a href="javascript:;" class="addr-set-default-btn"><i>Set default</i></a>
+                    <a href="javascript:;" class="addr-set-default-btn"><i>设为默认地址</i></a>
                   </div>
                   <div class="addr-opration addr-default" v-if="item.isDefault">默认地址</div>
                 </li>
@@ -144,6 +144,8 @@
     data () {
       return {
         limit: 3,
+        checkIndex: 0,
+        selectedAddrId: '',
         addressList : [
           {
             "addressId" : "410001",
