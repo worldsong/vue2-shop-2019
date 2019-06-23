@@ -81,3 +81,7 @@ Webstorm、git、nvm、vue-devtools、mongodb
 第五次课笔记：
 
 1、[第五讲：业务功能开发（二）（登录相关的高级功能及购物车列表功能实现）（2019-06-22）](http://note.youdao.com/noteshare?id=4db8bc44b5ad8d7a3d36380abd583a71&sub=4A63B853907A4145B7BED0D3DC5E3B3D)
+
+第六节课笔记：
+
+1、[第六讲：业务功能开发（三）（购物车及收货地址页面功能）（2019-06-23）](http://note.youdao.com/noteshare?id=dbc4bc7329441d829a9e438cf26136c3&sub=49F7E133B387467186DFC9DD5668DF94)
