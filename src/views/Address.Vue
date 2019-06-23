@@ -88,7 +88,7 @@
             </div>
 
             <div class="shipping-addr-more">
-              <a class="addr-more-btn up-down-btn" href="javascript:;" >
+              <a class="addr-more-btn up-down-btn" href="javascript:;" v-bind:class="{'open': limit>3}" @click="expand">
                 更多地址
                 <i class="i-up-down">
                   <i class="i-up-down-l"></i>
@@ -196,7 +196,15 @@
       NavFooter,
       Modal
     },
-    methods: {}
+    methods: {
+      expand(){
+        if(this.limit == 3){
+          this.limit = this.addressList.length
+        } else {
+          this.limit = 3;
+        }
+      }
+    }
   }
 </script>
 
