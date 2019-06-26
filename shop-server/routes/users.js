@@ -244,5 +244,34 @@ router.post("/setDefault", function (req, res, next) {
       }
     })
   }
+});
+
+/* 删除地址接口 */
+router.post("/delAddress", function (req, res, next) {
+  var userId = req.cookies.userId;
+  var addressId = req.body.addressId;
+  User.update({
+    userId: userId
+  }, {
+    $pull:{
+      'addressList':{
+        'addressId':addressId
+      }
+    }
+  }, function (err, doc) {
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message,
+        result: ''
+      })
+    } else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: 'success'
+      })
+    }
+  })
 })
 module.exports = router;
