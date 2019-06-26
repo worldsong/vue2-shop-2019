@@ -119,7 +119,7 @@
             </div>
           </div>
           <div class="next-btn-wrap">
-            <a class="btn btn--m btn--red">去结算</a>
+            <router-link class="btn btn--m btn--red" v-bind:to="{path: 'orderConfirm', query: {'addressId': selectedAddrId}}">去结算</router-link>
           </div>
         </div>
       </div>
