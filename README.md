@@ -85,3 +85,7 @@ Webstorm、git、nvm、vue-devtools、mongodb
 第六节课笔记：
 
 1、[第六讲：业务功能开发（三）（购物车及收货地址页面功能）（2019-06-23）](http://note.youdao.com/noteshare?id=dbc4bc7329441d829a9e438cf26136c3&sub=49F7E133B387467186DFC9DD5668DF94)
+
+第七节课笔记：
+
+1、[第七讲：业务功能开发（四）（收货地址及订单处理）（2019-06-26）](http://note.youdao.com/noteshare?id=ce2bd0f972b426f23d0f1f53cd252b9a&sub=E03F950D1E6D48C5B27BEC59C58DF56D)
