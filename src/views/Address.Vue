@@ -146,40 +146,7 @@
         limit: 3,
         checkIndex: 0,
         selectedAddrId: '',
-        addressList : [
-          {
-            "addressId" : "410001",
-            "userName" : "admin",
-            "streetName" : "湖南 长沙市 岳麓区 城区麓谷企业广场",
-            "postCode" : "410001",
-            "tel" : "772083612",
-            "isDefault" : true
-          },
-          {
-            "addressId" : "410001",
-            "userName" : "admin",
-            "streetName" : "湖南 长沙市 岳麓区",
-            "postCode" : "410001",
-            "tel" : "2060884089",
-            "isDefault" : false
-          },
-          {
-            "addressId" : "410001",
-            "userName" : "Song",
-            "streetName" : "湖南 长沙市 ",
-            "postCode" : "410001",
-            "tel" : "1017735262",
-            "isDefault" : false
-          },
-          {
-            "addressId" : "410001",
-            "userName" : "Song",
-            "streetName" : "湖南",
-            "postCode" : "410001",
-            "tel" : "1017735262",
-            "isDefault" : false
-          }
-        ]
+        addressList : []
       }
     },
     computed:{
@@ -188,7 +155,7 @@
       }
     },
     mounted(){
-
+      this.init();
     },
     components: {
       NavHeader,
@@ -203,6 +170,14 @@
         } else {
           this.limit = 3;
         }
+      },
+      init(){
+        axios.get("/users/addressList").then((response)=> {
+          let res = response.data;
+          console.log(res.result);
+          this.addressList = res.result;
+          this.selectedAddrId = this.addressList[0].addressId;
+        })
       }
     }
   }
