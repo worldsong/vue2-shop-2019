@@ -133,6 +133,14 @@
         <a href="javascirpt:void(0)" class="btn btn--m btn--red" @click="isMdShow=false">取消</a>
       </div>
     </modal>
+    <modal :mdShow="isMdShow_undel" @close="closeModal">
+      <p slot="message">
+        至少保留一个收货地址，已无法继续删除！！！
+      </p>
+      <div slot="btnGroup">
+        <a href="javascirpt:void(0)" class="btn btn--m btn--red" @click="isMdShow_undel=false">取消</a>
+      </div>
+    </modal>
     <nav-footer></nav-footer>
   </div>
 </template>
@@ -156,6 +164,7 @@
         checkIndex: 0,
         selectedAddrId: '',
         isMdShow: false,
+        isMdShow_undel: false,
         addressId:'',
         addressList : []
       }
@@ -203,10 +212,15 @@
       },
       closeModal(){
         this.isMdShow = false;
+        this.isMdShow_undel = false;
       },
       delAddressConfirm(addressId){
-        this.isMdShow = true;
-        this.addressId = addressId;
+        if(this.addressList.length > 1){
+          this.isMdShow = true;
+          this.addressId = addressId;
+        } else {
+          this.isMdShow_undel = true;
+        }
       },
       delAddress(){
         axios.post("/users/delAddress", {
