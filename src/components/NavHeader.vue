@@ -36,7 +36,7 @@
             <a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag = true" v-if="!nickName">登录</a>
             <a href="javascript:void(0)" class="navbar-link" @click="logOut" v-else>登出</a>
             <div class="navbar-cart-container">
-              <span class="navbar-cart-count"></span>
+              <span class="navbar-cart-count" v-text="cartCount" v-if="cartCount"></span>
               <a class="navbar-link" href="/#/cart">
                 <svg class="navbar-cart-logo">
                   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-cart"></use>
@@ -98,7 +98,7 @@
       }
     },
     computed: {
-      ...mapState(['nickName'])
+      ...mapState(['nickName', 'cartCount'])
     },
     mounted(){
       this.checkLogin();
@@ -128,6 +128,7 @@
             this.loginModalFlag = false;
 //            this.nickName = res.result.userName;
             this.$store.commit("updateUserInfo", res.result.userName);
+            this.getCartCount();
           } else {
             this.errorTip = true;
           }
@@ -143,6 +144,12 @@
           } else {
 
           }
+        })
+      },
+      getCartCount(){
+        axios.get("/users/getCartCount").then( response => {
+          var res = response.data;
+          this.$store.commit("updateCartCount", res.result);
         })
       }
     }
