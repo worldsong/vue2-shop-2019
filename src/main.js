@@ -46,5 +46,31 @@ new Vue({
   store,
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  mounted(){
+    this.checkLogin();
+    this.getCartCount();
+  },
+  methods:{
+    checkLogin(){
+      axios.get("http://localhost:3000/users/checkLogin").then(res=> {
+        var res = res.data;
+        if (res.status == "0") {
+          this.$store.commit("updateUserInfo", res.result);
+        }else{
+          if(this.$route.path!="/goods"){
+            this.$router.push("/goods");
+          }
+        }
+      });
+    },
+    getCartCount(){
+      axios.get("http://localhost:3000/users/getCartCount").then(res=>{
+        var res = res.data;
+        if(res.status=="0"){
+          this.$store.commit("updateCartCount",res.result);
+        }
+      });
+    }
+  }
 })
