@@ -23,15 +23,15 @@
         <div class="order-create-main">
           <h3>恭喜! <br>订单提交成功，请尽快付款！</h3>
           <p>
-            <span>订单号：100000001</span>
-            <span>应付金额：￥40390</span>
+            <span>订单号：{{ orderId }}</span>
+            <span>应付金额：{{ orderTotal | currency() }}</span>
           </p>
           <div class="order-create-btn-wrap">
             <div class="btn-l-wrap">
-              <a href="javascript:;" class="btn btn--m">购物车列表</a>
+              <router-link to="/cart" class="btn btn--m">购物车列表</router-link>
             </div>
             <div class="btn-r-wrap">
-              <a href="javascript:;" class="btn btn--m">商品列表</a>
+              <router-link to="/" class="btn btn--m">商品列表</router-link>
             </div>
           </div>
         </div>
@@ -56,7 +56,8 @@
     name: 'OrderSuccess',
     data () {
       return {
-
+        orderId: '',
+        orderTotal: 0
       }
     },
     computed:{},
@@ -70,7 +71,26 @@
       Modal
     },
     methods: {
-      int(){}
+      init(){
+        var orderId = this.$route.query.orderId;
+        if(!orderId){
+          return;
+        }
+        axios.post("/users/orderDetail", {
+          orderId: orderId
+        }).then((response) => {
+          let res = response.data;
+          if(res.status == '0'){
+            console.log(res.result);
+            this.orderId = orderId;
+            this.orderTotal = res.result.orderTotal;
+          } else if(res.status == '12001'){
+            console.log("系统没有这个订单！")
+          } else if(res.status == '13001'){
+            console.log(res.msg);
+          }
+        })
+      }
     }
   }
 </script>
