@@ -85,6 +85,7 @@
 <script>
   import './../assets/css/login.css'
   import axios from 'axios'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'NavHeader',
@@ -94,8 +95,10 @@
         userPwd: '123456',
         errorTip: false,
         loginModalFlag: false,
-        nickName: ''
       }
+    },
+    computed: {
+      ...mapState(['nickName'])
     },
     mounted(){
       this.checkLogin();
@@ -105,7 +108,8 @@
         axios.post("/users/logout").then((response) => {
           let res = response.data;
           if(res.status == "0"){
-            this.nickName = ''
+//            this.nickName = ''
+            this.$store.commit("updateUserInfo", "")
           }
         })
       },
@@ -122,7 +126,8 @@
           if(res.status == "0"){
             this.errorTip = false;
             this.loginModalFlag = false;
-            this.nickName = res.result.userName;
+//            this.nickName = res.result.userName;
+            this.$store.commit("updateUserInfo", res.result.userName);
           } else {
             this.errorTip = true;
           }
@@ -132,7 +137,8 @@
         axios.get("users/checkLogin").then((response) => {
           var res = response.data;
           if(res.status =="0"){
-            this.nickName = res.result;
+//            this.nickName = res.result;
+            this.$store.commit("updateUserInfo", res.result);
             this.loginModalFlag = false;
           } else {
 
