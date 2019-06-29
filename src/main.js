@@ -8,6 +8,8 @@ import router from './router'
 import VueLazyLoad from 'vue-lazyload'
 import infiniteScroll from  'vue-infinite-scroll'
 
+axios.defaults.withCredentials = true;
+
 import {currency} from './util/currency'
 Vue.filter("currency",currency);
 

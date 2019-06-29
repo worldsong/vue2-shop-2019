@@ -204,7 +204,7 @@
         }, 500)
       },
       addCart(productId){
-        axios.post("/goods/addCart", {
+        axios.post("http://localhost:3000/goods/addCart", {
           productId: productId
         }).then((res) => {
           var res = res.data;

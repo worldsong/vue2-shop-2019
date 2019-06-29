@@ -201,7 +201,7 @@
     },
     methods: {
       init(){
-        axios.get('users/cartList').then((response) => {
+        axios.get('http://localhost:3000/users/cartList').then((response) => {
           let res = response.data;
           this.cartList = res.result;
         })
@@ -214,7 +214,7 @@
         this.modalConfirm = true;
       },
       delCart(){
-        axios.post("/users/cartDel", {
+        axios.post("http://localhost:3000/users/cartDel", {
           productId: this.delItem.productId
         }).then((response) => {
           let res = response.data;
@@ -237,7 +237,7 @@
         } else {
           item.checked = (item.checked == '1'? '0' : '1');
         }
-        axios.post('/users/cartEdit', {
+        axios.post('http://localhost:3000/users/cartEdit', {
           productId: item.productId,
           productNum: item.productNum,
           checked: item.checked
@@ -254,7 +254,7 @@
         this.cartList.forEach((item)=> {
           item.checked = flag ? '1' : '0'
         });
-        axios.post('/users/editCheckAll', {
+        axios.post('http://localhost:3000/users/editCheckAll', {
           checkAll: flag
         }).then((response) => {
           let res = response.data;

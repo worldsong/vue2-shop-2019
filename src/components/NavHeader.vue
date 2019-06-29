@@ -105,7 +105,7 @@
     },
     methods: {
       logOut(){
-        axios.post("/users/logout").then((response) => {
+        axios.post("http://localhost:3000/users/logout").then((response) => {
           let res = response.data;
           if(res.status == "0"){
 //            this.nickName = ''
@@ -120,7 +120,7 @@
           this.errorTip = true;
           return;
         }
-        axios.post("/users/login", {
+        axios.post("http://localhost:3000/users/login", {
           userName: this.userName,
           userPwd: this.userPwd
         }).then((response) => {
@@ -137,7 +137,7 @@
         })
       },
       checkLogin(){
-        axios.get("users/checkLogin").then((response) => {
+        axios.get("http://localhost:3000/users/checkLogin").then((response) => {
           var res = response.data;
           if(res.status =="0"){
 //            this.nickName = res.result;
@@ -149,7 +149,7 @@
         })
       },
       getCartCount(){
-        axios.get("/users/getCartCount").then( response => {
+        axios.get("http://localhost:3000/users/getCartCount").then( response => {
           var res = response.data;
           this.$store.commit("updateCartCount", res.result);
         })

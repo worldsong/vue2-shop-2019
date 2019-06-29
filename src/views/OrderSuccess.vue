@@ -76,7 +76,7 @@
         if(!orderId){
           return;
         }
-        axios.post("/users/orderDetail", {
+        axios.post("http://localhost:3000/users/orderDetail", {
           orderId: orderId
         }).then((response) => {
           let res = response.data;

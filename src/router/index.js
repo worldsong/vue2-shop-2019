@@ -46,7 +46,7 @@ const router = new Router({
 
 // 判断是否需要登录权限以及是否登录
 router.beforeEach((to, from, next) => {
-  axios.get("/users/checkLogin").then(response => {
+  axios.get("http://localhost:3000/users/checkLogin").then(response => {
     var res = response.data;
     if(res.status == '0'){
       next();

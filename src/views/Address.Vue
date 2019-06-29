@@ -192,7 +192,7 @@
         }
       },
       init(){
-        axios.get("/users/addressList").then((response)=> {
+        axios.get("http://localhost:3000/users/addressList").then((response)=> {
           let res = response.data;
           console.log(res.result);
           this.addressList = res.result;
@@ -200,7 +200,7 @@
         })
       },
       setDefault(addressId){
-        axios.post("/users/setDefault", {
+        axios.post("http://localhost:3000/users/setDefault", {
           addressId: addressId
         }).then((response) => {
           let res = response.data;
@@ -223,7 +223,7 @@
         }
       },
       delAddress(){
-        axios.post("/users/delAddress", {
+        axios.post("http://localhost:3000/users/delAddress", {
           addressId: this.addressId
         }).then((response)=>{
           let res = response.data;
