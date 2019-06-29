@@ -89,3 +89,7 @@ Webstorm、git、nvm、vue-devtools、mongodb
 第七节课笔记：
 
 1、[第七讲：业务功能开发（四）（收货地址及订单处理）（2019-06-26）](http://note.youdao.com/noteshare?id=ce2bd0f972b426f23d0f1f53cd252b9a&sub=E03F950D1E6D48C5B27BEC59C58DF56D)
+
+第八次课笔记：
+
+1、[第八讲：Vuex引入及Vue项目打包优化及部署上线+课程总结（2019-6-29）](http://note.youdao.com/noteshare?id=96a37a14b0a44282ccec477ad559f055&sub=2AA14C5144CC4F7DA5F4ABFE93674D02)
