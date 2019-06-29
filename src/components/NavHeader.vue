@@ -109,7 +109,9 @@
           let res = response.data;
           if(res.status == "0"){
 //            this.nickName = ''
-            this.$store.commit("updateUserInfo", "")
+            this.$store.commit("updateUserInfo", "");
+            this.$store.commit("clearCartCount");
+            this.$router.push('/goods')
           }
         })
       },
